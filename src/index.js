@@ -41,15 +41,18 @@ function buttonElFunction(event) {
       res => {
         let data = res.data.hits;
         let breedsArray = [...data];
-        if (theme) {
+        if (theme && breedsArray.length !== 0) {
           createCard(breedsArray);
+          Notiflix.Notify.success(
+            `Hooray! We found ${breedsArray.length} images.`
+          );
           console.log(breedsArray);
           searchForm.reset();
           localStorage.clear();
         } else {
           galleryEl.innerHTML = ' ';
           searchForm.reset();
-          Notiflix.Notify.failure('Enter name');
+          Notiflix.Notify.failure('Enter valide name');
         }
       }
       //   console.log(data);

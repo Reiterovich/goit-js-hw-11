@@ -7,9 +7,10 @@ import { searchPhoto, fetchUrl, photoSearch } from './apijs';
 // const searchWord = 'dog';
 // searchForm.reset();
 
-const buttonEl = document.querySelector('button');
+const buttonEl = document.querySelector('[type="submit"]');
 const galleryEl = document.querySelector('.gallery');
 const searchForm = document.querySelector('#search-form');
+const loadMore = document.querySelector('.load-more');
 
 buttonEl.addEventListener('click', buttonElFunction);
 searchForm.addEventListener('input', searchEv);
@@ -34,6 +35,7 @@ function buttonElFunction(event) {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: 'true',
+        per_page: 40,
         q: `${theme}`,
       },
     })
@@ -58,6 +60,7 @@ function buttonElFunction(event) {
       //   console.log(data);
     )
     .catch(err => {
+      localStorage.clear();
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
@@ -97,3 +100,5 @@ function createCard(array) {
     .join(' ');
   galleryEl.innerHTML = markup;
 }
+
+loadMore.addEventListener('click', event => {});

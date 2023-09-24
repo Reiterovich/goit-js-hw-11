@@ -38,3 +38,7 @@ img {
   /* display: flex; */
   font-size: 15px;
 }
+
+.load-more {
+  margin-left: 45%;
+}

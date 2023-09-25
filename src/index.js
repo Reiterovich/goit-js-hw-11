@@ -1,7 +1,7 @@
 import Notiflix from 'notiflix';
 import axios from 'axios';
 
-import { searchPhoto, fetchUrl, photoSearch } from './apijs';
+import { searchPhoto, fetchUrl, photoSearch } from './apijs.js';
 // import axios, { isCancel, AxiosError } from 'axios';
 
 // const searchWord = 'dog';

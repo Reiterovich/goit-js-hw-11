@@ -59,7 +59,7 @@ function buttonElFunction(event) {
             `Hooray! We found ${breedsArray.length} images.`
           );
           console.log(breedsArray);
-          searchForm.reset();
+          // searchForm.reset();
           // localStorage.clear();
         } else {
           galleryEl.innerHTML = ' ';

@@ -11,7 +11,6 @@ const buttonEl = document.querySelector('[type="submit"]');
 const galleryEl = document.querySelector('.gallery');
 const searchForm = document.querySelector('#search-form');
 const loadMore = document.querySelector('.load-more');
-const photoCard = document.querySelector('.photo-card');
 
 buttonEl.addEventListener('click', buttonElFunction);
 searchForm.addEventListener('input', searchEv);
@@ -110,7 +109,7 @@ function createCard(array) {
 }
 
 function createCardLoadMore(array) {
-  const markup = array
+  const markupLoad = array
     .map(
       ({
         webformatURL,
@@ -138,7 +137,7 @@ function createCardLoadMore(array) {
   </div>`
     )
     .join(' ');
-  photoCard.insertAdjacentHTML = ('beforeend', galleryEl);
+  galleryEl.insertAdjacentHTML('beforeend', markupLoad);
 }
 
 function loadMoreFun(event) {
@@ -163,12 +162,13 @@ function loadMoreFun(event) {
       res => {
         let data = res.data.hits;
         let breedsArray = [...data];
+        console.log(breedsArray);
         // if (breedsArray.length !== 0) {
         createCardLoadMore(breedsArray);
         Notiflix.Notify.success(
           `Hooray! We found ${breedsArray.length} images.`
         );
-        console.log(breedsArray);
+
         // searchForm.reset();
         // localStorage.clear();
         // } else {

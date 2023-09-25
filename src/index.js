@@ -51,6 +51,9 @@ function buttonElFunction(event) {
         let breedsArray = [...data];
         if (theme && breedsArray.length !== 0) {
           loadMore.style.visibility = 'visible';
+          if (breedsArray.length < 40) {
+            loadMore.style.visibility = 'hidden';
+          }
           createCard(breedsArray);
           Notiflix.Notify.success(
             `Hooray! We found ${breedsArray.length} images.`
@@ -163,17 +166,17 @@ function loadMoreFun(event) {
         let data = res.data.hits;
         let breedsArray = [...data];
         console.log(breedsArray);
-        // if (breedsArray.length !== 0) {
-        createCardLoadMore(breedsArray);
-        Notiflix.Notify.success(
-          `Hooray! We found ${breedsArray.length} images.`
-        );
+        if (breedsArray.length !== 0) {
+          createCardLoadMore(breedsArray);
+          Notiflix.Notify.success(
+            `Hooray! We found ${breedsArray.length} images.`
+          );
 
-        // searchForm.reset();
-        // localStorage.clear();
-        // } else {
-        //   loadMore.style.visibility = 'hidden';
-        // }
+          // searchForm.reset();
+          // localStorage.clear();
+        } else {
+          loadMore.style.visibility = 'hidden';
+        }
       }
       //   console.log(data);
     )
